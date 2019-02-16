@@ -5,16 +5,32 @@
         <script src="popup.js"></script>
         <title></title>
         <style>
+
         .button {
           width: 100%;
-          background-color: #99ccff;
-          border: none;
-          color: white;
+          background-color: white;
+          border: .5px solid black;
+          color: black;
           padding: 16px 32px;
           text-align: center;
           font-size: 16px;
           margin: 4px 2px;
-          opacity: 0.6;
+          opacity: .4;
+          transition: 0.3s;
+          display: inline-block;
+          text-decoration: none;
+          cursor: pointer;
+          border-radius: 12px;
+        }
+        .obutton {
+          padding: 6px 16px;
+          width: 100%;
+          background-image: linear-gradient(to bottom right, #ccffff, #ffffff);
+          color: black;
+          text-align: center;
+          font-size: 16px;
+          margin: 4px 2px;
+          opacity: .6;
           transition: 0.3s;
           display: inline-block;
           text-decoration: none;
@@ -75,6 +91,7 @@
         }
 
         .button:hover {opacity: 1}
+        .obutton:hover {opacity: 1}
         .google-button:hover{opacity: 1}
         </style>
     </head>
@@ -92,19 +109,18 @@
           </span>
           <span class="google-button__text">Sign in with Google</span>
         </button>
-
+        <a href="login.html">
+          <button class="obutton">
+            Login
+          </button>
+        </a>
         <br>
         <a href="createAccount.html">
-
-          Create Account Manually
-
+          <button class="obutton">
+          Create Account
+        </button>
         </a>
         <br>
-        <a href="login.html">
-
-            Login Manually
-  
-        </a>
 
 
     </body>
