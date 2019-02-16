@@ -6,13 +6,13 @@ function login(json) {
 
     Httpreq.withCredentials = false;
     
-    Httpreq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    Httpreq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     Httpreq.onreadystatechange = function() {
         if (Httpreq.readyState == 4) {
             alert(Httpreq.responseText);
         }
     }
 
-    Httpreq.send(json);
+    Httpreq.send(JSON.stringify(json));
     alert("post sent!");
 }
