@@ -26,7 +26,6 @@ SECRET_KEY = '2z1=g2t3pt^8%f!-4em*+z1fs)uc8!ikw#zm$k5u+22zo==f84'
 DEBUG = True
 
 ALLOWED_HOSTS = ['django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com','localhost','13.56.137.79']
-CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -117,6 +116,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
