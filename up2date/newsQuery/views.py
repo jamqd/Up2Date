@@ -83,4 +83,4 @@ def authenticate(request):
         else:
             authUser.addAuthUser(data['name'], data['email'], data['password'])
             return 'Account made!'
-    return False
+    return 'false'
