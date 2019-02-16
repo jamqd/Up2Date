@@ -18,7 +18,7 @@ default_app = firebase_admin.initialize_app(cred, options={
     'databaseURL': 'https://up2date-d815e.firebaseio.com/'
 })
 
-def ranking(search_term, from_date = 1262304000, article_count=100, subscription_key="db529dd884ae4732a2bf1a453aa66bb1"):
+#def ranking(search_term, from_date = 1262304000, article_count=100, subscription_key="db529dd884ae4732a2bf1a453aa66bb1"):
     
 
 def query(search_term, from_date = 1262304000, article_count=100, subscription_key="db529dd884ae4732a2bf1a453aa66bb1"): #use epoch time
