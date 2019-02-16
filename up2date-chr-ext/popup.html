@@ -4,11 +4,35 @@
         <meta charset="UTF-8">
         <script src="popup.js"></script>
         <title></title>
+        <style>
+        .button {
+          width: 100%;
+          background-color: #99ccff;
+          border: none;
+          color: white;
+          padding: 16px 32px;
+          text-align: center;
+          font-size: 16px;
+          margin: 4px 2px;
+          opacity: 0.6;
+          transition: 0.3s;
+          display: inline-block;
+          text-decoration: none;
+          cursor: pointer;
+          border-radius: 12px;
+        }
+
+        .button:hover {opacity: 1}
+        </style>
     </head>
 
     <body>
-        <div id="output"></div>
-        <button id="query-highlight">Highlight</button>
-        <button id="query-title">Title</button>
+        <div style="display: flex; justify-content: center;">
+          <img src="uicon.png" align="middle" width="30" height="30">
+        </div>
+        <br>
+        <button id="query-highlight" class="button">Highlight</button>
+        <button id="query-title" class="button">Title</button>
+
     </body>
 </html>
