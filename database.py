@@ -1,57 +1,3 @@
-# import requests
-# import json
-
-# def getDatabase():
-
-#     response = requests.get("https://up2date-d815e.firebaseio.com/.json")
-#     print(response.json())
-
-# def writeToDataBase(json):
-#     response = requests.put("https://up2date-d815e.firebaseio.com/hello.json", data='{"testing" : "{ "test":"bob"}"}')
-#     print(str(response))
-
-# def addUser(name):
-#     json = {
-#         "name": name
-#     }
-#     response = requests.post("https://up2date-d815e.firebaseio.com/users.json",data=str(json))
-#     print(response)
-#     print("added user " + str(name))
-
-
-# def addQuery(UID, query, frequency=7):
-
-#     print("added query: " + str(query) + "to " + str(UID))
-
-# testJson = {
-#   "Users" : {
-#     "UID" : {
-#       "query1" : {
-#         "frequency" : 7,
-#         "queryText" : "query text here",
-#         "relevanceThreshold" : 50
-#       },
-#       "query2" : {
-#         "frequency" : 30,
-#         "queryText" : "query text 2 here",
-#         "relevanceThreshold" : 60
-#       }
-#     },
-#     "UID2" : {
-#       "query1" : {
-#         "frequency" : 9,
-#         "queryText" : "query text here",
-#         "relevanceThreshold" : 80
-#       }
-#     }
-#   }
-# }
-
-# # writeToDataBase(testJson)
-# addUser("bob")
-# getDatabase()
-
-
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
@@ -75,9 +21,6 @@ def addUser(name, email):
     print(uid)
     return uid
 
-
-test_uid = addUser("niceu", "ceasar@gmail.com")
-
 def addQuery(uid, queryText):
     userRef = db.reference('users/' + str(uid))
     queryInfo = {
@@ -89,39 +32,85 @@ def addQuery(uid, queryText):
     queryID = queryID.key
     return queryID
 
-queryID = addQuery(test_uid, "trump is dumb")
-
 def setQuery(uid, queryID, queryText):
     queryTextRef = db.reference('users/' + str(uid) + "/" + str(queryID) + "/" + "queryText")
     queryTextRef.set(queryText)
-
-setQuery(test_uid, queryID, "this should be here")
 
 def setFrequency(uid, queryID, frequency):
     frequencyRef = db.reference('users/' + str(uid) + "/" + str(queryID) + "/" + "frequency")
     frequencyRef.set(frequency)
 
-setFrequency(test_uid,queryID,30)
-
 def setRelevanceThreshold(uid, queryID, relevanceThreshold):
     relevanceThresholdRef = db.reference('users/' + str(uid) + "/" + str(queryID) + "/" + "relevanceThreshold")
     relevanceThresholdRef.set(relevanceThreshold)
-
-setRelevanceThreshold(test_uid, queryID, 69)
 
 def setEmail(uid, email):
     emailRef = db.reference('users/' + str(uid) + "/" + "email")
     emailRef.set(email)
 
-setEmail(test_uid, "bobbyjindal@gmail.com")
-
 def setName(uid, name):
     nameRef = db.reference('users/' + str(uid) + "/" + "name")
     nameRef.set(name)
 
-setName(test_uid, "donald")
+def getUID(email):
+    usersRef = db.reference("users/")
+    uidDict = usersRef.order_by_child('email').equal_to(email)
+    print(list(uidDict.get().items())[0][0])
+    return list(uidDict.get().items())[0][0]
+
+def getQueryID(uid, queryText):
+    userRef = db.reference("users/" + str(uid))
+    qidDict = userRef.order_by_child('queryText').equal_to(queryText)
+    print(list(qidDict.get())[0])
+    return list(qidDict.get())[0]
+
+def getFrequency(uid, queryID):
+    queryRef = db.reference("users/" + str(uid )+ "/" + str(queryID))
+    print(queryRef.get()["frequency"])
+    return queryRef.get()["frequency"]
+    
+def getRelevanceThreshold(uid, queryID):
+    queryRef = db.reference("users/" + str(uid )+ "/" + str(queryID))
+    print(queryRef.get()["relevanceThreshold"])
+    return queryRef.get()["relevanceThreshold"]
+
+def getQueryText(uid, queryID):
+    queryRef = db.reference("users/" + str(uid )+ "/" + str(queryID))
+    print(queryRef.get()["queryText"])
+    return queryRef.get()["queryText"]
+
+def getQueryIDs(uid):
+    userRef = db.reference("users/" + str(uid))
+    qidDict = userRef.order_by_child('queryText')
+    return list(qidDict.get())[2:]
+
+def getQueries(uid):
+    queryIDs = getQueryIDs(uid)
+    queries = []
+    for i in queryIDs:
+        queries.append(getQueryText(uid, i))
+    print(queries)
+    return queries
 
 
 
+
+
+
+# test_uid = addUser("niceu", "ceasar@gmail.com")
+# queryID = addQuery(test_uid, "trump is dumb")
+# setQuery(test_uid, queryID, "this should be here")
+# setFrequency(test_uid,queryID,30)
+# setRelevanceThreshold(test_uid, queryID, 69)
+# setEmail(test_uid, "bobbyjindal@gmail.com")
+# setName(test_uid, "donald")
+# recoverd = getUID("bobbyjindal@gmail.com")
+# testing = getQueryID(recoverd, "this should be here")
+# getFrequency(test_uid, testing)
+# getRelevanceThreshold(test_uid, testing)
+# getQueryText(test_uid, testing)
+# addQuery(recoverd, "fuck GCP")
+# getQueryIDs(recoverd)
+# getQueries(recoverd)
 
 
