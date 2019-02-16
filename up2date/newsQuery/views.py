@@ -83,9 +83,9 @@ def authenticate(request):
         #data = json.loads(request.body)
         #data = request.json()
         print(data)
-        if 'name' not in data:
-            return HttpResponse('Logged in!')
-        else:
-            authUser.addAuthUser(data['name'], data['email'], data['password'])
-            return HttpResponse('Account made!')
+        #if 'name' not in data:
+            #return HttpResponse('Logged in!')
+        #else:
+        authUser.addAuthUser(data['name'], data['email'], data['password'])
+        return HttpResponse('Account made!')
     return HttpResponse('false')
