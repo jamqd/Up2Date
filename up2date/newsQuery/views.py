@@ -182,6 +182,9 @@ def authenticate(request):
     if request.method == "POST":
         print("auth POST received")
         data = request.json()
-        addAuthUser(data['name'], data['email'])
-        return True
+        if 'name' not in data:
+            return True
+        else:
+            addAuthUser(data['name'], data['email'])
+            return True
     return False
