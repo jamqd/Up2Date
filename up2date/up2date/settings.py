@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com','localhos
 # Application definition
 
 INSTALLED_APPS = [
+    'newsQuery.apps.NewsqueryConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

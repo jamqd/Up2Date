@@ -15,5 +15,6 @@ def query(search_term, from_date=1262304000, article_count=10, subscription_key=
         else :
             dict[i[1]] = 1
 
+    print(info)
     return info #returns (name, source name, url, datepublished)
     
