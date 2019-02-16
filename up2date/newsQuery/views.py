@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 import time
 import sys
 import os
+import json
 
 import firebase_admin
 from firebase_admin import credentials
@@ -76,7 +77,8 @@ def updated(request):
 def authenticate(request):
     if request.method == "POST":
         print("auth POST received")
-        data = request.json()
+        data = json.loads(request.body)
+        #data = request.json()
         print(data)
         if 'name' not in data:
             return HttpResponse('Logged in!')
