@@ -1,3 +1,0 @@
-firebase_admin
-integration
-snippets
