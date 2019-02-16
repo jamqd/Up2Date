@@ -88,22 +88,9 @@
         Password:
         <input type="text" id="password">
         <br>
-        <input type="button" onclick="myFunction()" value="Submit">
+        <input type="button" value="Submit" id="obutton">
 
     </form>
-    <script>
-        function myFunction() {
-          console.log(document.getElementById("name").value);
-          console.log(document.getElementById("email").value);
-          console.log(document.getElementById("password").value);
-          json = {
-              "name" : document.getElementById("name").value,
-              "email": document.getElementById("email").value,
-              "password" : document.getElementById("password").value
-          }
-          createAccount(json)
-        }
-    </script>
 
 </body>
 
