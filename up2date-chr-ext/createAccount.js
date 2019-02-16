@@ -16,8 +16,6 @@ function createAccount(json) {
     Httpreq.send(JSON.stringify(json));
     alert("post sent!");
 }
-<<<<<<< HEAD
-=======
 
 function myFunction() {
     console.log(document.getElementById("name").value);
@@ -34,4 +32,3 @@ function myFunction() {
 window.onload=function() {
     document.getElementById('obutton').addEventListener('click', myFunction);
 }
->>>>>>> 8c531f8a5c456d63c3fa485ca5f7134542a668cb
