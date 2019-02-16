@@ -92,6 +92,13 @@ def getQueries(uid):
     print(queries)
     return queries
 
+def deleteQuery(uid, queryText):
+    qid = getQueryID(uid, queryText)
+    queryRef = db.reference("users/" + str(uid )+ "/" + str(qid))
+    queryRef.delete()
+
+
+
 
 
 
