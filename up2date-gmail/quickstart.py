@@ -6,6 +6,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from email.mime.text import MIMEText
 import base64
+import time, threading
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.compose']
@@ -86,6 +87,7 @@ def main():
 
     message = create_message('up2date.treehacks@gmail.com', 'up2date.treehacks@gmail.com', 'hello', 'hello')
     send_message(service, 'me', message)
+    threading.Timer(10, main).start()
 
 if __name__ == '__main__':
     main()
