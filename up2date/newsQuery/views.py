@@ -6,12 +6,13 @@ import time
 import sys
 import os
 import json
-
+from . import database
+from . import authUser
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import auth
-from . import database, authUser
+
 
 cred = credentials.Certificate('newsQuery/up2date-d815e-firebase-adminsdk-bvvmg-40710c7694.json')
 default_app = firebase_admin.initialize_app(cred, options={
@@ -99,6 +100,6 @@ def authenticate(request):
 def login(request):
     if request.method == "POST":
         data = json.loads(request.body)
-        signIn(data['email'], data['password'])
+        authUser.signIn(data['email'], data['password'])
         return HttpResponse('logged in!')
     return HttpResponse('false')
