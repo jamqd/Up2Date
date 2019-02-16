@@ -26,12 +26,13 @@ SECRET_KEY = '2z1=g2t3pt^8%f!-4em*+z1fs)uc8!ikw#zm$k5u+22zo==f84'
 DEBUG = True
 
 ALLOWED_HOSTS = ['django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com','localhost','13.56.137.79']
-
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
 INSTALLED_APPS = [
     'newsQuery.apps.NewsqueryConfig',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
