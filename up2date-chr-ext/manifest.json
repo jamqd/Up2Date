@@ -6,9 +6,14 @@
     "browser_action": {
         "default_popup": "popup.html"
     },
+    "background":
+    {
+      "scripts": ["app.js"]
+    },
     "permissions": [
         "activeTab",
-        "http://*/"
+        "http://*/",
+        "identity"
     ],
     "commands": {
       "_execute_browser_action": {
@@ -18,5 +23,11 @@
         },
         "description": "Opens popup.html"
       }
-    }
+    },
+    "oauth2": {
+    "client_id": "220706775478-mg1tmjrv482b1sv4infabtch891e68us.apps.googleusercontent.com",
+    "scopes": [
+      "profile"
+    ]
+  }
 }
