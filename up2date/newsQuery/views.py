@@ -20,7 +20,7 @@ def query(search_term, from_date = 1262304000, article_count=100, subscription_k
     print("info below:")
     print(info)
     return dict_rank #returns (name, source name, url, datepublished)
-    
+
 # Create your views here.
 @csrf_exempt
 def search(request):
@@ -30,3 +30,11 @@ def search(request):
         searchterm = request.body.decode('utf-8')
     info = query(searchterm)
     return HttpResponse(info)
+
+@csrf_exempt
+def pref_update(request):
+    return render(request, 'preferences.html')
+
+@csrf_exempt
+def updated(request):
+    return render(request, 'updated.html')
