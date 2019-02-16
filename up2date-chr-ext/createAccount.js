@@ -16,3 +16,22 @@ function createAccount(json) {
     Httpreq.send(JSON.stringify(json));
     alert("post sent!");
 }
+<<<<<<< HEAD
+=======
+
+function myFunction() {
+    console.log(document.getElementById("name").value);
+    console.log(document.getElementById("email").value);
+    console.log(document.getElementById("password").value);
+    json = {
+        "name" : document.getElementById("name").value,
+        "email": document.getElementById("email").value,
+        "password" : document.getElementById("password").value
+    }
+    createAccount(json)
+  }
+
+window.onload=function() {
+    document.getElementById('obutton').addEventListener('click', myFunction);
+}
+>>>>>>> 8c531f8a5c456d63c3fa485ca5f7134542a668cb
