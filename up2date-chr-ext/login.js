@@ -16,3 +16,17 @@ function login(json) {
     Httpreq.send(JSON.stringify(json));
     alert("post sent!");
 }
+
+function myFunction() {
+    console.log(document.getElementById("email").value);
+    console.log(document.getElementById("password").value);
+    json = {
+        "email": document.getElementById("email").value,
+        "password" : document.getElementById("password").value
+    }
+    login(json)
+  }
+
+window.onload=function() {
+    document.getElementById('obutton').addEventListener('click', myFunction);
+}
