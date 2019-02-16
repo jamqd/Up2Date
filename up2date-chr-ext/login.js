@@ -1,4 +1,4 @@
-function createAccount(json) {
+function login(json) {
     console.log(json)
     const Httpreq = new XMLHttpRequest();
     const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/auth/";

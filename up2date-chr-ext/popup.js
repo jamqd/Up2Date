@@ -15,6 +15,7 @@ function queryHighlight() {
                 alert(Httpreq.responseText);
             }
         }
+        
 
         Httpreq.send(selection[0]);
         alert("post sent!");

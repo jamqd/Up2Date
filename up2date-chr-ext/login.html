@@ -1,0 +1,34 @@
+<html>
+    <head>
+            <meta charset="UTF-8">
+            <script src="login.js"></script>
+    </head>
+
+<body>
+    <h1> Create an Account</h1>
+    <form name="createAccount" action="">
+        Email:
+        <input type="text" id="email">
+        <br>
+        Password:
+        <input type="text" id="password">
+        <br>
+        <input type="button" onclick="myFunction()" value="Submit">
+
+    </form>
+    <script>
+        function myFunction() {
+          console.log(document.getElementById("email").value);
+          console.log(document.getElementById("password").value);
+          json = {
+              "email": document.getElementById("email").value,
+              "password" : document.getElementById("password").value
+          }
+          login(json)
+        }
+    </script>
+
+</body>
+
+
+</html>
