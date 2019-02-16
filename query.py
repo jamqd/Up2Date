@@ -1,20 +1,15 @@
 import requests
-dict = {} #save this somewhere later to persist through calls
 
-def query(search_term, from_date=1262304000, article_count=10, subscription_key="db529dd884ae4732a2bf1a453aa66bb1"): #use epoch time
-    search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
-    headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
-    params  = {"count": article_count, "q": search_term, "since": from_date, "sortBy": "Date", "textDecorations": True, "textFormat": "HTML"}
-    response = requests.get(search_url, headers=headers, params=params)
-    response.raise_for_status()
-    search_results = response.json()
-    info = [(article["name"], article["provider"][0]["name"], article["url"], article["datePublished"]) for article in search_results["value"]]
-    for i in info:
-        if i[1] in dict.keys():
-            dict[i[1]] += 1
-        else :
-            dict[i[1]] = 1
+url = "https://api.similarweb.com/v1/website/cnn.com/total-traffic-and-engagement/visits?api_key=863cfc940aa344a6831457b963e794c9&start_date=2016-01&end_date=2016-03&main_domain_only=false&granularity=monthly"
 
-    print(info)
-    return info #returns (name, source name, url, datepublished)
-    
+
+response = requests.get(url)
+print(response.text)
+
+
+# .format(
+#     site='cnn.com',
+#     api_key=MY_API_KEY,
+#     start_date="2017-09",
+#     end_date="2017-10",
+#     granularity="monthly"

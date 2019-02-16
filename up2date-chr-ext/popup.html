@@ -7,14 +7,14 @@
         <style>
         .button {
           width: 100%;
-          background-color: #99ccff;
-          border: none;
-          color: white;
+          background-color: white;
+          border: .5px solid black;
+          color: black;
           padding: 16px 32px;
           text-align: center;
           font-size: 16px;
           margin: 4px 2px;
-          opacity: 0.6;
+          opacity: .4;
           transition: 0.3s;
           display: inline-block;
           text-decoration: none;
@@ -73,7 +73,14 @@
           font-weight: bold;
           font-family: 'Roboto',arial,sans-serif;
         }
+        a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
 
+    text-decoration: none;
+    color: initial;
+}
         .button:hover {opacity: 1}
         .google-button:hover{opacity: 1}
         </style>
@@ -94,18 +101,17 @@
         </button>
 
         <br>
-        <a href="createAccount.html">
+        <a href="createAccount.html" class="button">
 
           Create Account Manually
 
         </a>
         <br>
-        <a href="login.html">
+        <a href="login.html" class="button">
 
             Login Manually
-  
-        </a>
 
+        </a>
 
     </body>
 </html>
