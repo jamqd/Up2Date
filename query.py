@@ -1,15 +1,8 @@
 import requests
 
-url = "https://api.similarweb.com/v1/website/cnn.com/total-traffic-and-engagement/visits?api_key=863cfc940aa344a6831457b963e794c9&start_date=2016-01&end_date=2016-03&main_domain_only=false&granularity=monthly"
+def query (search_term, from_date, to_date):
+    a = "https://newsapi.org/v2/everything?q={0}&from={1}&to={2}&sortBy=popularity&apiKey=3c906a21fbeb43c7819511120fd8a1c2".format(search_term, from_date, to_date)
+    response = requests.get(a).json()
+    print(response)
 
-
-response = requests.get(url)
-print(response.text)
-
-
-# .format(
-#     site='cnn.com',
-#     api_key=MY_API_KEY,
-#     start_date="2017-09",
-#     end_date="2017-10",
-#     granularity="monthly"
+query("bitcoin", "2019-01-26", "2019-02-15") #date format yyyy-mm-dd one month back at most
