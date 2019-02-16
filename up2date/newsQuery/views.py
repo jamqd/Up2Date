@@ -76,6 +76,7 @@ def updated(request):
 @csrf_exempt 
 def authenticate(request):
     print(request)
+    print(json.loads(request.body))
     print(type(request))
     if request.method == "POST":
         print("auth POST received")
