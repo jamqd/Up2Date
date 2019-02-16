@@ -2,7 +2,7 @@ import firebase_admin
 from firebase_admin import auth
 import database
 
-def addAuthUser(name, email):
+def addAuthUser(name, email, password):
     uid = database.addUser(name, email, password)
     auth.create_user(uid=uid,display_name=name,email=email, password=password)
 
