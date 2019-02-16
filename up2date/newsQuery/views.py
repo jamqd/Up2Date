@@ -77,11 +77,11 @@ def updated(request):
 def authenticate(request):
     print(request)
     print(json.loads(request.body))
-    print(type(request))
+    print(type(json.loads(request.body)))
     if request.method == "POST":
         print("auth POST received")
-        data = request.POST
-        #data = json.loads(request.body)
+        #data = request.POST
+        data = json.loads(request.body)
         #data = request.json()
         print(data)
         #if 'name' not in data:
