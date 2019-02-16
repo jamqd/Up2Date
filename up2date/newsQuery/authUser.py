@@ -1,6 +1,6 @@
 import firebase_admin
 from firebase_admin import auth
-# from . import database
+from . import database
 import database
 import json
 import urllib

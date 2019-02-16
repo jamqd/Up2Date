@@ -90,3 +90,12 @@ def authenticate(request):
         authUser.addAuthUser(data['name'], data['email'], data['password'])
         return HttpResponse('Account made!')
     return HttpResponse('false')
+
+
+@csrf_exempt
+def login(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        signIn(data['email'], data['password'])
+        return HttpResponse('logged in!')
+    return HttpResponse('false')
