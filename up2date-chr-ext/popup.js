@@ -45,3 +45,4 @@ window.onload=function() {
     document.getElementById('query-highlight').addEventListener('click', queryHighlight);
     document.getElementById('query-title').addEventListener('click', queryTitle);
 }
+
