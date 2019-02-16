@@ -4,6 +4,8 @@ function login(json) {
     const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/auth/";
     Httpreq.open("POST", Httpurl, true);
 
+    Httpreq.withCredentials = false;
+    
     Httpreq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     Httpreq.onreadystatechange = function() {
         if (Httpreq.readyState == 4) {
