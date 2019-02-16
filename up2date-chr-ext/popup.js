@@ -2,7 +2,7 @@ function queryHighlight() {
     chrome.tabs.executeScript( {
         code: "window.getSelection().toString();"
     }, function(selection) {
-        document.getElementById("output").innerHTML = selection[0];
+        //document.getElementById("output").innerHTML = selection[0];
         //user authentication goes here
         const Httpreq = new XMLHttpRequest();
         const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/q/";
