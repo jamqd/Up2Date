@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import requests
 from django.http import HttpResponse, HttpResponseRedirect
+from django.views.decorators.csrf import csrf_exempt
 dict = {} #save this somewhere later to persist through calls
 
 def query(search_term, from_date=1262304000, article_count=10, subscription_key="db529dd884ae4732a2bf1a453aa66bb1"): #use epoch time
@@ -21,10 +22,11 @@ def query(search_term, from_date=1262304000, article_count=10, subscription_key=
     return info #returns (name, source name, url, datepublished)
     
 # Create your views here.
+@csrf_exempt
 def search(request):
     searchterm = "not found"
     if request.method == "POST":
         print("POST recieved")
         searchterm = request.body.decode('utf-8')
     info = query(searchterm)
-    return HttpResponse(searchterm)
+    return HttpResponse(info)
