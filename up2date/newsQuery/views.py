@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import requests
+from django.http import HttpResponse, HttpResponseRedirect
 dict = {} #save this somewhere later to persist through calls
 
 def query(search_term, from_date=1262304000, article_count=10, subscription_key="db529dd884ae4732a2bf1a453aa66bb1"): #use epoch time
@@ -15,15 +16,15 @@ def query(search_term, from_date=1262304000, article_count=10, subscription_key=
             dict[i[1]] += 1
         else :
             dict[i[1]] = 1
-
+    print("info below:")
     print(info)
     return info #returns (name, source name, url, datepublished)
     
 # Create your views here.
 def search(request):
-    searchterm = ""
+    searchterm = "not found"
     if request.method == "POST":
         print("POST recieved")
         searchterm = request.body.decode('utf-8')
     info = query(searchterm)
-    return info
+    return HttpResponse(searchterm)
