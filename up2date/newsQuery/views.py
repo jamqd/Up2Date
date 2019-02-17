@@ -14,7 +14,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import auth
-sys.path.append('/Users/joshuayoung/Desktop/up2date/up2date/newsQuery/up2date-gmail/quickstart.py')
+import quickstart
 
 cred = credentials.Certificate('newsQuery/up2date-d815e-firebase-adminsdk-bvvmg-40710c7694.json')
 default_app = firebase_admin.initialize_app(cred, options={
