@@ -42,6 +42,7 @@ function createFunction() {
     Httpreq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     Httpreq.onreadystatechange = function() {
         if (Httpreq.readyState == 4) {
+            uid = Httpreq.responseText;
             alert(Httpreq.responseText);
         }
     }
