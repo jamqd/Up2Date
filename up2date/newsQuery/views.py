@@ -48,7 +48,7 @@ def query(search_term, from_date = 1262304000, article_count=100, count=100000, 
             if article['url'] == url and dict_rank[article['provider'][0]['name']] > 10:
                 newsList.append(article['url'])
     print(newsList)
-    return newsList
+    return dict_rank
     #return dict_rank #returns (name, source name, url, datepublished)
 
 def queryNewsApi (search_term, from_date, to_date): #date format yyyy-mm-dd one month back at most
@@ -68,9 +68,8 @@ def search(request):
         data = json.loads(request.body)
         searchterm = data['query']
         uid = data['uid']
-        userEmail = database.getEmail(uid)
         info = query(searchterm)
-        database.addQuery(database.getUID(userEmail), searchterm)
+        database.addQuery(uid, searchterm)
         max = 1
         total = 1
         for j, k in info.items():
