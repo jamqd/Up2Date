@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path('q/', views.search, name='search_question'),
+    path('send/', views.sendEmails, name='Send Emails'),
     path('login/', views.login, name='loginme'),
     path('auth/', views.authenticate, name='authentication'),
     path('getq/', views.getQ, name='Get Queries'),
