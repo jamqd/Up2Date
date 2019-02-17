@@ -59,11 +59,11 @@ function createFunction() {
 }
 
 function loginFunction() {
-    console.log(document.getElementById("email").value);
-    console.log(document.getElementById("password").value);
+    console.log(document.getElementById("login_email").value);
+    console.log(document.getElementById("login_password").value);
     json = {
-        "email": document.getElementById("email").value,
-        "password" : document.getElementById("password").value
+        "email": document.getElementById("login_email").value,
+        "password" : document.getElementById("login_password").value
     }
     login(json)
   }
