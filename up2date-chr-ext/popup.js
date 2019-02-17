@@ -204,8 +204,9 @@ function getQueryId(queryText, inner, index ){
             var text = Httpreq.responseText;
             console.log("here " + text);
             inner.innerHTML = editTag(text);
-            document.getElementById(text).addEventListener('click', function (text){
-                setFrequency(uid, text);
+            document.getElementById(text).addEventListener('click', function(event){
+                setFrequency(uid, event.currentTarget.id);
+                console.log(event.currentTarget.id);
             });
         }
     }
@@ -219,6 +220,7 @@ function getQueryId(queryText, inner, index ){
 }
 
 function setFrequency (uid, qid){
+    var newFreq = prompt("Please enter new frequency", 7);
     const Httpreq = new XMLHttpRequest();
     const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/setf/";
     Httpreq.open("POST", Httpurl, true);
@@ -235,11 +237,13 @@ function setFrequency (uid, qid){
     var json = {
         "uid" : uid,
         "qid": qid,
-        "frequency" : 1
+        "frequency" : newFreq
     }
+    console.log(json);
 
     Httpreq.send(JSON.stringify(json));
     alert("sent POST")
+    location.reload();
 }
 
 function editTag(id){
