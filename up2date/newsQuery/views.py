@@ -79,7 +79,20 @@ def storeQuery(request):
 
 @csrf_exempt
 def sendEmails(request):
-    
+    if request.method == "POST":
+        ht = database.massSelect()
+        for user in ht:
+            urlsList = []
+            print(user[0])
+            for q in ht[user[0]]:
+                info = query(q)
+                print(info)
+                urlsList.append(info)
+            #send emails for email: user[0]
+            #urlsList is now a list of urls
+
+        return HttpResponse('emails successfully sent!')
+    return HttpResponse('bad request')
 
 @csrf_exempt
 def search(request):

@@ -95,9 +95,16 @@ def deleteQuery(uid, queryText):
     queryRef = db.reference("users/" + str(uid )+ "/" + str(qid))
     queryRef.delete()
 
+def massSelect():
+    usersRef = db.reference('users/')
+    ht = {}
+    for uid in usersRef.get():
+        qlist = getQueries(uid)
+        ht[getEmail(uid)] = qlist
+    print(ht)
+    return ht
 
-
-
+#massSelect()
 
 
 
