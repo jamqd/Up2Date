@@ -83,8 +83,8 @@ def sendEmails(request):
         ht = database.massSelect()
         for user in ht:
             urlsList = []
-            print(user[0])
-            for q in ht[user[0]]:
+            print(user.key())
+            for q in ht[user.key()]:
                 info = query(q)
                 print(info)
                 urlsList.append(info)
