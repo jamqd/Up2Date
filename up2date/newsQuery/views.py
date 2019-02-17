@@ -40,7 +40,7 @@ def query(search_term, from_date = 1262304000, article_count=100, count=100000, 
         #print("info below:")
         #print(info)
         time.sleep(0.75)
-    
+
     params  = {"count": 50, "q": search_term, "since": from_date, "sortBy": "Date", "textDecorations": True, "textFormat": "HTML", "offset": 0}
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
@@ -60,7 +60,7 @@ def query(search_term, from_date = 1262304000, article_count=100, count=100000, 
 def queryNewsApi (search_term, from_date, to_date): #date format yyyy-mm-dd one month back at most
     a = "https://newsapi.org/v2/everything?q={0}&from={1}&to={2}&sortBy=popularity&apiKey=3c906a21fbeb43c7819511120fd8a1c2".format(search_term, from_date, to_date)
     response = requests.get(a).json()
-    
+
     info = [(article["url"]) for article in response["articles"]]
     print('newsapi info below')
     print(info)
@@ -88,6 +88,7 @@ def sendEmails(request):
                 info = query(q)
                 print(info)
                 urlsList.append(info)
+            send_emails(user, urlsList)
             #send emails for email: user[0]
             #urlsList is now a list of urls
 
