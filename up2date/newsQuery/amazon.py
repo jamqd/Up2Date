@@ -23,7 +23,7 @@ def send_message(recipient, texts):
     BODY_TEXT = ""
 # The email body for recipients with non-HTML email clients.
     for text in texts:
-        BODY_TEXT = BODY_TEXT + text + '\n'
+        BODY_TEXT = BODY_TEXT + str(text) + '\n'
 
 # The HTML body of the email.
     BODY_HTML = """<html>
