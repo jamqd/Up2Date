@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+      <body background="city.jpg">
         <meta charset="UTF-8">
         <script type="text/javascript">
           var loggedIn = localStorage.getItem("loggedIn");
@@ -32,7 +33,7 @@
         .obutton {
           padding: 6px 16px;
           width: 100%;
-          background-image: linear-gradient(to bottom right, #ccffff, #ffffff);
+          background-image: linear-gradient(to bottom right, #ffffcc, #ffffff);
           color: black;
           text-align: center;
           font-size: 16px;
@@ -143,28 +144,6 @@
             }
 
 
-            /*version 2*/
-
-
-
-            .header.ver2 {
-                font-size: 14px;
-
-            }
-
-
-            .header.ver2::before {
-              content: " ";
-              display:block;
-              position:absolute;
-              width:30em;
-              left:50%;
-              top:50%;
-              -webkit-transform: translateX(-50%);
-              z-index: -1;
-              margin-top:0;
-              border-top: 1px solid black;
-            }
 
         </style>
     </head>
@@ -174,12 +153,8 @@
           <img src="uicon.png" align="middle" width="30" height="30">
         </div>
         <br>
-        <div class="sectionHeader">
-            <span class="header ver2">
-                <em>Up2Date!</em>
-            </span>
-          </div>
-        
+
+
         <button id="query-highlight" class="button">Highlight</button>
         <button id="query-title" class="button">Title</button>
         <button type="button" class="google-button">
@@ -202,7 +177,7 @@
         <br>
         <a href="queries.html">
           <button class="obutton">
-          queries
+          Queries
         </button>
         </a>
         <br>
