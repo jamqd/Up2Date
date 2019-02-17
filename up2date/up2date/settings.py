@@ -25,15 +25,16 @@ SECRET_KEY = '2z1=g2t3pt^8%f!-4em*+z1fs)uc8!ikw#zm$k5u+22zo==f84'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['up2date-environment.3tb68qtrzw.us-west-1.elasticbeanstalk.com',
-                'localhost',
-                '13.56.137.79',
-                '127.0.0.1',
-                '54.151.18.46',
-                '13.56.56.31'
-                '172.31.30.182',
-                'www.kqed.org'
-                ]
+ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['up2date-environment.3tb68qtrzw.us-west-1.elasticbeanstalk.com',
+#                'localhost',
+#                '13.56.137.79',
+#                '127.0.0.1',
+#                '54.151.18.46',
+#                '13.56.56.31'
+#                '172.31.30.182',
+#               'www.kqed.org'
+#                ]
 
 # Application definition
 
