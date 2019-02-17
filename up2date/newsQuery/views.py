@@ -101,3 +101,24 @@ def getQ(request):
         value = str(database.getQueries(uid))
         return HttpResponse(value)
     return HttpResponse('false')
+
+@csrf_exempt
+def getF(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        uid = data['uid']
+        text = data['query']
+        freq = int(database.getFrequency(uid, database.getQueryID(uid, text)))
+        return HttpResponse(freq)
+    return HttpResponse('false')
+
+@csrf_exempt
+def setF(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        uid = data['uid']
+        text = data['query']
+        freq = data['frequency']
+        database.setFrequency(uid, database.getQueryID(uid, text), freq)
+        return HttpResponse('frequency set!')
+    return HttpResponse('false')
