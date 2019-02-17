@@ -18,13 +18,13 @@ function createAccount(json) {
 }
 
 function myFunction() {
-    console.log(document.getElementById("name").value);
-    console.log(document.getElementById("email").value);
-    console.log(document.getElementById("password").value);
+    console.log(document.getElementById("login_name").value);
+    console.log(document.getElementById("login_email").value);
+    console.log(document.getElementById("login_password").value);
     json = {
-        "name" : document.getElementById("name").value,
-        "email": document.getElementById("email").value,
-        "password" : document.getElementById("password").value
+        "name" : document.getElementById("login_name").value,
+        "email": document.getElementById("login_email").value,
+        "password" : document.getElementById("login_password").value
     }
     createAccount(json)
   }

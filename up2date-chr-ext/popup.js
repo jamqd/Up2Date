@@ -20,13 +20,13 @@ function createAccount(json) {
 }
 
 function createFunction() {
-    console.log(document.getElementById("name").value);
-    console.log(document.getElementById("email").value);
-    console.log(document.getElementById("password").value);
+    console.log(document.getElementById("login_name").value);
+    console.log(document.getElementById("login_email").value);
+    console.log(document.getElementById("login_password").value);
     json = {
-        "name" : document.getElementById("name").value,
-        "email": document.getElementById("email").value,
-        "password" : document.getElementById("password").value
+        "name" : document.getElementById("login_name").value,
+        "email": document.getElementById("login_email").value,
+        "password" : document.getElementById("login_password").value
     }
     createAccount(json)
   }
@@ -38,7 +38,7 @@ function createFunction() {
     Httpreq.open("POST", Httpurl, true);
 
     Httpreq.withCredentials = false;
-    
+
     Httpreq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     Httpreq.onreadystatechange = function() {
         if (Httpreq.readyState == 4) {
@@ -131,7 +131,7 @@ function displayQueries() {
     Httpreq.open("POST", Httpurl, true);
 
     Httpreq.withCredentials = false;
-    
+
     Httpreq.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
     var queryList;
     Httpreq.onreadystatechange = function() {
@@ -172,14 +172,14 @@ function getQueryFrequency(queryText, inner, index) {
     Httpreq.open("POST", Httpurl, true);
 
     Httpreq.withCredentials = false;
-    
+
     Httpreq.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
     Httpreq.onreadystatechange = function() {
         if (Httpreq.readyState == 4) {
             var text = Httpreq.responseText;
             console.log("here " + text);
             inner.innerHTML = text;
-            
+
         }
     }
     var json = {
@@ -197,7 +197,7 @@ function getQueryId(queryText, inner, index ){
     Httpreq.open("POST", Httpurl, true);
 
     Httpreq.withCredentials = false;
-    
+
     Httpreq.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
     Httpreq.onreadystatechange = function() {
         if (Httpreq.readyState == 4) {
@@ -226,7 +226,7 @@ function setFrequency (uid, qid){
     Httpreq.open("POST", Httpurl, true);
 
     Httpreq.withCredentials = false;
-    
+
     Httpreq.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
     Httpreq.onreadystatechange = function() {
         if (Httpreq.readyState == 4) {
@@ -270,4 +270,3 @@ window.onload=function() {
     }
 
 }
-
