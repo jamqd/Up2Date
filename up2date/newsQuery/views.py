@@ -141,8 +141,8 @@ def getF(request):
     if request.method == "POST":
         data = json.loads(request.body)
         uid = data['uid']
-        text = data['query']
-        freq = int(database.getFrequency(uid, database.getQueryID(uid, text)))
+        index = int(data['index'])
+        freq = int(database.getFrequency(uid, database.getQueryIDs(uid)[index]))
         return HttpResponse(freq)
     return HttpResponse('false')
 

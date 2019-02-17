@@ -151,7 +151,7 @@ function displayQueries() {
                 var c2 = row.insertCell(1);
                 var c3 = row.insertCell(2);
                 c1.innerHTML = queryList[i];
-                c2.innerHTML = getQueryFrequency(queryList[i]);
+                getQueryFrequency(queryList[i], c2, i);
                 getQueryId(queryList[i], c3, i);
             }
         }
@@ -166,8 +166,29 @@ function displayQueries() {
 
 }
 
-function getQueryFrequency(queryText) {
-    return -1;
+function getQueryFrequency(queryText, inner, index) {
+    const Httpreq = new XMLHttpRequest();
+    const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/getf/";
+    Httpreq.open("POST", Httpurl, true);
+
+    Httpreq.withCredentials = false;
+    
+    Httpreq.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+    Httpreq.onreadystatechange = function() {
+        if (Httpreq.readyState == 4) {
+            var text = Httpreq.responseText;
+            console.log("here " + text);
+            inner.innerHTML = text;
+            
+        }
+    }
+    var json = {
+        "uid" : uid,
+        "index": index
+    }
+
+    Httpreq.send(JSON.stringify(json));
+    alert("sent POST")
 }
 
 function getQueryId(queryText, inner, index ){
