@@ -100,8 +100,8 @@ def authenticate(request):
 def login(request):
     if request.method == "POST":
         data = json.loads(request.body)
-        authUser.signIn(data['email'], data['password'])
-        return HttpResponse('logged in!')
+        uid = authUser.signIn(data['email'], data['password'])
+        return HttpResponse(uid)
     return HttpResponse('false')
 
 @csrf_exempt
