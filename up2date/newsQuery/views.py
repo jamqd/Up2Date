@@ -1,5 +1,7 @@
 from django.shortcuts import render
 import requests
+import datetime
+import time
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 import time
@@ -38,7 +40,24 @@ def query(search_term, from_date = 1262304000, article_count=100, count=100000, 
         print("info below:")
         print(info)
         time.sleep(0.5)
-    return dict_rank #returns (name, source name, url, datepublished)
+    
+    newsList = []
+    newNews = queryNewsApi(search_term, '2019-02-10', '2019-02-17')
+    for url in newNews:
+        for article in search_results["value"]:
+            if article['url'] == url and dict_rank[article['provider'][0]['name']] > 10:
+                newsList.append(article['url'])
+    print(newsList)
+    return newsList
+    #return dict_rank #returns (name, source name, url, datepublished)
+
+def queryNewsApi (search_term, from_date, to_date): #date format yyyy-mm-dd one month back at most
+    a = "https://newsapi.org/v2/everything?q={0}&from={1}&to={2}&sortBy=popularity&apiKey=3c906a21fbeb43c7819511120fd8a1c2".format(search_term, from_date, to_date)
+    response = requests.get(a).json()
+    
+    info = [(article["url"]) for article in response["articles"]]
+    print(info)
+    return info
 
 @csrf_exempt
 def search(request):
