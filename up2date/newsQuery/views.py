@@ -46,7 +46,7 @@ def search(request):
     searchterm = "not found"
     if request.method == "POST":
         print("POST received")
-        data = request.json()
+        data = json.loads(request.body)
         searchterm = data['query']
         userEmail = data['email']
         info = query(searchterm)
