@@ -21,7 +21,7 @@ default_app = firebase_admin.initialize_app(cred, options={
     'databaseURL': 'https://up2date-d815e.firebaseio.com/'
 })
 
-def query(search_term, from_date = 1262304000, article_count=100, count=100000, subscription_key="db529dd884ae4732a2bf1a453aa66bb1"): #use epoch time
+def query(search_term, from_date = 1262304000, article_count=100, count=100000, subscription_key="9bd525debceb4c76aaae784632483ed4"): #use epoch time
     search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     dict_rank = {} #save this somewhere later to persist through calls
