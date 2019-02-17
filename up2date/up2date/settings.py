@@ -32,7 +32,8 @@ ALLOWED_HOSTS = ['treehacks19-u2d-demo-environment.fc3kwfnqyx.us-west-1.elasticb
                 '54.151.18.46',
                 '13.56.56.31'
                 '172.31.30.182',
-                'treeH.25bpgmwvjx.us-west-2.elasticbeanstalk.com'
+                'treeH.25bpgmwvjx.us-west-2.elasticbeanstalk.com',
+                'treeUp.xdpccjfpps.us-west-2.elasticbeanstalk.com'
                 ]
 
 # Application definition
