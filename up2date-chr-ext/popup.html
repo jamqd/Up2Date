@@ -2,6 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <script type="text/javascript">
+          var loggedIn = localStorage.getItem("loggedIn");
+          if (!loggedIn){
+            localStorage.setItem("loggedIn", false);
+            localStorage.setItem("uid", "");
+          }
+        </script>
         <script src="popup.js"></script>
         <title>Popup</title>
         <style>
@@ -199,6 +206,12 @@
         </button>
         </a>
         <br>
+        <br>
+        <a>
+          <button class="obutton" id="logout">
+          Sign Out
+        </button>
+        </a>
 
 
     </body>

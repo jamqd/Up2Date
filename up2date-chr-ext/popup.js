@@ -1,5 +1,5 @@
-var uid = "-LYshCmequUOw-w7wAgG";
-
+var loggedIn = localStorage.getItem("loggedIn");
+var uid = localStorage.getItem("uid");
 function createAccount(json) {
     console.log(json)
     const Httpreq = new XMLHttpRequest();
@@ -45,6 +45,12 @@ function createFunction() {
             uid = Httpreq.responseText;
             alert(Httpreq.responseText);
             console.log(uid);
+            if (uid != "None" && uid){
+                localStorage.setItem("loggedIn", true);
+                localStorage.setItem("uid", uid);
+                window.location.replace("queries.html")
+            }
+            console.log(loggedIn);
         }
     }
 
@@ -115,6 +121,11 @@ function queryTitle() {
 }
 
 function displayQueries() {
+    console.log(!localStorage.getItem("loggedIn"));
+    if (localStorage.getItem("loggedIn") == 'false'){
+        console.log("here");
+        return;
+    }
     const Httpreq = new XMLHttpRequest();
     const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/getq/";
     Httpreq.open("POST", Httpurl, true);
@@ -122,17 +133,25 @@ function displayQueries() {
     Httpreq.withCredentials = false;
     
     Httpreq.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+    var queryList;
     Httpreq.onreadystatechange = function() {
         if (Httpreq.readyState == 4) {
             var text = Httpreq.responseText;
-            console.log(typeof(text));
-            document.getElementById("queries").innerHTML = text;
+            // document.getElementById("queries").innerHTML = text;
             list = text.substring(1, text.length - 1).replace(/\'/gi,'').split(",");
             list  = list.map(function(item){
                 return item.trim();
             });
             console.log(list);
-            return list;
+            queryList = list;
+            var table = document.getElementById("queriesTable");
+            for (var i = 0; i < queryList.length; i++) {
+                var row = table.insertRow(1);
+                var c1 = row.insertCell(0);
+                var c2 = row.insertCell(1);
+                c1.innerHTML = queryList[i];
+                c2.innerHTML = getQueryFrequency(queryList[i]);
+            }
         }
     }
 
@@ -143,13 +162,22 @@ function displayQueries() {
     Httpreq.send(JSON.stringify(json));
     alert("sent POST")
 
-    return Httpreq.onreadystatechange;
+}
+
+function getQueryFrequency(queryText) {
+    return -1;
+}
+
+function signOut(){
+    localStorage.setItem("loggedIn", false);
+    localStorage.setItem("uid", "");
 }
 
 window.onload=function() {
     var tab_title = document.title;
     if (tab_title == "Popup") {
         document.getElementById('query-highlight').addEventListener('click', queryHighlight);
+        document.getElementById("logout").addEventListener('click', signOut);
         document.getElementById('query-title').addEventListener('click', queryTitle);
     } else if (tab_title == "Create") {
         document.getElementById('cbutton').addEventListener('click', createFunction);
