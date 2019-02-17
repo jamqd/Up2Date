@@ -37,18 +37,18 @@ def query(search_term, from_date = 1262304000, article_count=100, count=100000, 
                 dict_rank[i[1]] += 1
             else :
                 dict_rank[i[1]] = 1
-        print("info below:")
-        print(info)
+        #print("info below:")
+        #print(info)
         time.sleep(0.5)
     
     newsList = []
     newNews = queryNewsApi(search_term, '2019-02-10', '2019-02-17')
     for url in newNews:
         for article in search_results["value"]:
-            if dict_rank[article['provider'][0]['name']] > 10:
-                print(article['url'])
-                print(url)
-                print(dict_rank[article['provider'][0]['name']])
+            #if dict_rank[article['provider'][0]['name']] > 10:
+                #print(article['url'])
+                #print(url)
+                #print(dict_rank[article['provider'][0]['name']])
             if article['url'] == url and dict_rank[article['provider'][0]['name']] > 10:
                 newsList.append(article['url'])
     print('news list below')
