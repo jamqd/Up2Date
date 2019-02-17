@@ -49,8 +49,9 @@ def query(search_term, from_date = 1262304000, article_count=100, count=100000, 
 
     newsList = []
     for b in info2:
-        if b[1] in dict_rank.keys() and dict_rank[b[1]] > 10:
+        if b[1] in dict_rank.keys() and dict_rank[b[1]] > 20:
             newsList.append(b[2])
+            dict_rank[b[1]] = 0
     print('news list below')
     print(newsList)
     return dict_rank
