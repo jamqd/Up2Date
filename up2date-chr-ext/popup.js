@@ -204,12 +204,38 @@ function getQueryId(queryText, inner, index ){
             var text = Httpreq.responseText;
             console.log("here " + text);
             inner.innerHTML = editTag(text);
-            
+            document.getElementById(text).addEventListener('click', function (text){
+                setFrequency(uid, text);
+            });
         }
     }
     var json = {
         "uid" : uid,
         "index": index
+    }
+
+    Httpreq.send(JSON.stringify(json));
+    alert("sent POST")
+}
+
+function setFrequency (uid, qid){
+    const Httpreq = new XMLHttpRequest();
+    const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/setf/";
+    Httpreq.open("POST", Httpurl, true);
+
+    Httpreq.withCredentials = false;
+    
+    Httpreq.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+    Httpreq.onreadystatechange = function() {
+        if (Httpreq.readyState == 4) {
+            var text = Httpreq.responseText;
+            console.log("here " + text);
+        }
+    }
+    var json = {
+        "uid" : uid,
+        "qid": qid,
+        "frequency" : 1
     }
 
     Httpreq.send(JSON.stringify(json));
