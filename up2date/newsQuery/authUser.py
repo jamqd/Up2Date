@@ -1,7 +1,7 @@
 import firebase_admin
 from firebase_admin import auth
-from . import database
-#import database
+# from . import database
+import database
 import json
 import urllib
 
@@ -38,8 +38,9 @@ def signIn(email, password):
         print(message["error"]["message"])
         return None
     else:
-        print(json.load(loader)['localId'])
-        return json.load(loader)['localId']
+        uid = json.load(loader)['localId']
+        print(uid)
+        return str(uid)
 
 # cred = firebase_admin.credentials.Certificate('up2date-d815e-firebase-adminsdk-bvvmg-40710c7694.json')
 # default_app = firebase_admin.initialize_app(cred, options={
@@ -47,4 +48,4 @@ def signIn(email, password):
 # })
 
 # addAuthUser("John", "john.amq.dang@gmail.com", "fuckfuck")
-# signIn("john.amq.dang@gmail.com", "didy")
+signIn("john.amq.dang@gmail.com", "fuckfuckfuck")
