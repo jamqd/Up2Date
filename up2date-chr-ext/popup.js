@@ -69,6 +69,11 @@ function loginFunction() {
   }
 
 function queryHighlight() {
+    console.log(!localStorage.getItem("loggedIn"));
+    if (localStorage.getItem("loggedIn") == 'false'){
+        console.log("here");
+        return;
+    }
     chrome.tabs.executeScript( {
         code: "window.getSelection().toString();"
     }, function(selection) {
@@ -96,6 +101,11 @@ function queryHighlight() {
 }
 
 function queryTitle() {
+    console.log(!localStorage.getItem("loggedIn"));
+    if (localStorage.getItem("loggedIn") == 'false'){
+        console.log("here");
+        return;
+    }
     chrome.tabs.getSelected(null, function(tab) {
         //user authentication goes here
         const Httpreq = new XMLHttpRequest();
@@ -167,6 +177,11 @@ function displayQueries() {
 }
 
 function getQueryFrequency(queryText, inner, index) {
+    console.log(!localStorage.getItem("loggedIn"));
+    if (localStorage.getItem("loggedIn") == 'false'){
+        console.log("here");
+        return;
+    }
     const Httpreq = new XMLHttpRequest();
     const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/getf/";
     Httpreq.open("POST", Httpurl, true);
@@ -192,6 +207,11 @@ function getQueryFrequency(queryText, inner, index) {
 }
 
 function getQueryId(queryText, inner, index ){
+    console.log(!localStorage.getItem("loggedIn"));
+    if (localStorage.getItem("loggedIn") == 'false'){
+        console.log("here");
+        return;
+    }
     const Httpreq = new XMLHttpRequest();
     const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/getqid/";
     Httpreq.open("POST", Httpurl, true);
@@ -220,6 +240,11 @@ function getQueryId(queryText, inner, index ){
 }
 
 function setFrequency (uid, qid){
+    console.log(!localStorage.getItem("loggedIn"));
+    if (localStorage.getItem("loggedIn") == 'false'){
+        console.log("here");
+        return;
+    }
     var newFreq = prompt("Please enter new frequency", 7);
     const Httpreq = new XMLHttpRequest();
     const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/setf/";
@@ -247,6 +272,11 @@ function setFrequency (uid, qid){
 }
 
 function editTag(id){
+    console.log(!localStorage.getItem("loggedIn"));
+    if (localStorage.getItem("loggedIn") == 'false'){
+        console.log("here");
+        return;
+    }
     return "<a id='" + id + "'>Edit</a>";
 }
 
