@@ -149,8 +149,10 @@ function displayQueries() {
                 var row = table.insertRow(1);
                 var c1 = row.insertCell(0);
                 var c2 = row.insertCell(1);
+                var c3 = row.insertCell(2);
                 c1.innerHTML = queryList[i];
                 c2.innerHTML = getQueryFrequency(queryList[i]);
+                getQueryId(queryList[i], c3);
             }
         }
     }
@@ -166,6 +168,34 @@ function displayQueries() {
 
 function getQueryFrequency(queryText) {
     return -1;
+}
+
+function getQueryId(queryText, inner){
+    const Httpreq = new XMLHttpRequest();
+    const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/getqid/";
+    Httpreq.open("POST", Httpurl, true);
+
+    Httpreq.withCredentials = false;
+    
+    Httpreq.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+    Httpreq.onreadystatechange = function() {
+        if (Httpreq.readyState == 4) {
+            var text = Httpreq.responseText;
+            inner.HTML = editTag(text);
+            
+        }
+    }
+    var json = {
+        "uid" : uid,
+        "queryText": queryText
+    }
+
+    Httpreq.send(JSON.stringify(json));
+    alert("sent POST")
+}
+
+function editTag(id){
+    return "<a id='" + id + "'>Edit</a>";
 }
 
 function signOut(){

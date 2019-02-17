@@ -104,6 +104,16 @@ def getQ(request):
     return HttpResponse('false')
 
 @csrf_exempt
+def getQID(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        uid = data['uid']
+        queryText = data['queryText']
+        value = str(database.getQueryID(uid, queryText))
+        return HttpResponse(value)
+    return HttpResponse('false')
+
+@csrf_exempt
 def getF(request):
     if request.method == "POST":
         data = json.loads(request.body)
