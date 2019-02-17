@@ -4,6 +4,7 @@
     "description": "Gives you news up 2 date!",
     "version": "0.5",
     "browser_action": {
+        "default_icon": "uicon.png",
         "default_popup": "popup.html"
     },
     "background":
@@ -24,6 +25,8 @@
         "description": "Opens popup.html"
       }
     },
+
+
     "oauth2": {
     "client_id": "220706775478-mg1tmjrv482b1sv4infabtch891e68us.apps.googleusercontent.com",
     "scopes": [
