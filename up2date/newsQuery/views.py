@@ -106,7 +106,7 @@ def login(request):
 
 @csrf_exempt
 def getQ(request):
-    if request.method == "GET":
+    if request.method == "POST":
         data = json.loads(request.body)
         uid = data['uid']
         value = str(database.getQueries(uid))
