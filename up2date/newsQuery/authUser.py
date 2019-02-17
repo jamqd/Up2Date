@@ -42,10 +42,14 @@ def signIn(email, password):
         print(uid)
         return str(uid)
 
-# cred = firebase_admin.credentials.Certificate('up2date-d815e-firebase-adminsdk-bvvmg-40710c7694.json')
-# default_app = firebase_admin.initialize_app(cred, options={
-#     'databaseURL': 'https://up2date-d815e.firebaseio.com/'
-# })
+#cred = firebase_admin.credentials.Certificate('up2date-d815e-firebase-adminsdk-bvvmg-40710c7694.json')
+#default_app = firebase_admin.initialize_app(cred, options={
+#    'databaseURL': 'https://up2date-d815e.firebaseio.com/'
+#})
 
 # addAuthUser("John", "john.amq.dang@gmail.com", "fuckfuck")
 # signIn("john.amq.dang@gmail.com", "fuckfuckfuck")
+
+#uid = getUserId("john.amq.dang@gmail.com")
+#database.addQuery(uid, "testing 1")
+#database.addQuery(uid, "testing testing 2")

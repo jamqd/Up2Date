@@ -13,38 +13,33 @@ from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import auth
 
-
 cred = credentials.Certificate('newsQuery/up2date-d815e-firebase-adminsdk-bvvmg-40710c7694.json')
 default_app = firebase_admin.initialize_app(cred, options={
     'databaseURL': 'https://up2date-d815e.firebaseio.com/'
 })
 
-#def ranking(search_term, from_date = 1262304000, article_count=100, subscription_key="db529dd884ae4732a2bf1a453aa66bb1"):
-
-
-def query(search_term, offset, from_date = 1262304000, article_count=100, subscription_key="db529dd884ae4732a2bf1a453aa66bb1"): #use epoch time
+def query(search_term, from_date = 1262304000, article_count=100, count=100000, subscription_key="db529dd884ae4732a2bf1a453aa66bb1"): #use epoch time
     search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     dict_rank = {} #save this somewhere later to persist through calls
 
-    #for k in range(0, count/article_count):
-    params  = {"count": article_count, "q": search_term, "since": from_date, "sortBy": "Date", "textDecorations": True, "textFormat": "HTML", "offset": offset}
-    response = requests.get(search_url, headers=headers, params=params)
-    response.raise_for_status()
-    search_results = response.json()
+    for k in range(0, count/article_count):
+        params  = {"count": article_count, "q": search_term, "since": from_date, "sortBy": "Date", "textDecorations": True, "textFormat": "HTML", "offset": (k*100)}
+        response = requests.get(search_url, headers=headers, params=params)
+        response.raise_for_status()
+        search_results = response.json()
 
-    info = [(article["name"], article["provider"][0]["name"], article["url"], article["datePublished"]) for article in search_results["value"]]
-    for i in info:
-        if i[1] in dict_rank.keys():
-        dict_rank[i[1]] += 1
-        else :
-            dict_rank[i[1]] = 1
-    print("info below:")
-    print(info)
-    time.sleep(0.5)
-    return info #returns (name, source name, url, datepublished)
+        info = [(article["name"], article["provider"][0]["name"], article["url"], article["datePublished"]) for article in search_results["value"]]
+        for i in info:
+            if i[1] in dict_rank.keys():
+                dict_rank[i[1]] += 1
+            else :
+                dict_rank[i[1]] = 1
+        print("info below:")
+        print(info)
+        time.sleep(0.5)
+    return dict_rank #returns (name, source name, url, datepublished)
 
-# Create your views here.
 @csrf_exempt
 def search(request):
     userEmail = ""
@@ -54,7 +49,6 @@ def search(request):
         data = request.json()
         searchterm = data['query']
         userEmail = data['email']
-        #searchterm = request.body.decode('utf-8')
         info = query(searchterm)
         database.addQuery(database.getUID(userEmail), searchterm)
         max = 1
@@ -84,13 +78,8 @@ def authenticate(request):
     print(type(json.loads(request.body)))
     if request.method == "POST":
         print("auth POST received")
-        #data = request.POST
         data = json.loads(request.body)
-        #data = request.json()
         print(data)
-        #if 'name' not in data:
-            #return HttpResponse('Logged in!')
-        #else:
         authUser.addAuthUser(data['name'], data['email'], data['password'])
         return HttpResponse('Account made!')
     return HttpResponse('false')
@@ -100,6 +89,15 @@ def authenticate(request):
 def login(request):
     if request.method == "POST":
         data = json.loads(request.body)
-        authUser.signIn(data['email'], data['password'])
-        return HttpResponse('logged in!')
+        uid = authUser.signIn(data['email'], data['password'])
+        return HttpResponse(uid)
+    return HttpResponse('false')
+
+@csrf_exempt
+def getQ(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        uid = data['uid']
+        value = str(database.getQueries(uid))
+        return HttpResponse(value)
     return HttpResponse('false')

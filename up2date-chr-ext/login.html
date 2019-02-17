@@ -1,11 +1,83 @@
 <html>
     <head>
             <meta charset="UTF-8">
-            <script src="login.js"></script>
+            <script src="popup.js"></script>
+            <title>Login</title>
+            <style>
+                .sectionHeader {
+                    font-family: gotham_mediumregular, sans-serif;
+                    font-size: 6px;
+                    text-align: center;
+                    color: black;
+                    margin-bottom: 10px;
+                }
+    
+                .sectionHeader .header {
+                    font-size: 6px;
+                }
+    
+                span.header {
+                    font-family: civita_mediumregular, serif;
+                    font-size: 6px;
+                    background-color: #FFF;
+                    position: relative;
+                    z-index: 50;
+                    padding: 0 9px 0 9px;
+                }
+    
+                .header img {
+                    opacity: .45;
+                }
+    
+                /*version 1*/
+    
+                hr.rule1 {
+                    background-color: #FFF;
+                    position: absolute;
+                    z-index: 1;
+                    margin-top: -19px;
+                }
+    
+                .rule1.experience {
+                    left: 26%;
+                    right: 26%;
+                  min-width: 250px;
+                  border-top: 2px solid red;
+                }
+    
+    
+                /*version 2*/
+    
+    
+    
+                .header.ver2 {
+                    font-size: 14px;
+    
+                }
+    
+    
+                .header.ver2::before {
+                  content: " ";
+                  display:block;
+                  position:absolute;
+                  width:30em;
+                  left:50%;
+                  top:50%;
+                  -webkit-transform: translateX(-50%);
+                  z-index: -1;
+                  margin-top:0;
+                  border-top: 1px solid black;
+                }
+                </style>
     </head>
 
 <body>
-    <h1> Login</h1>
+    <div class="sectionHeader">
+        <span class="header ver2">
+            <em>Login</em>
+        </span>
+    </div>
+    
     <form name="login" action="">
         Email:
         <input type="text" id="email">
@@ -13,7 +85,7 @@
         Password:
         <input type="text" id="password">
         <br>
-        <input type="button" value="Submit" id="obutton">
+        <input type="button" value="Submit" id="lbutton">
 
     </form>
 
