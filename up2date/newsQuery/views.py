@@ -48,7 +48,8 @@ def search(request):
         print("POST received")
         data = json.loads(request.body)
         searchterm = data['query']
-        userEmail = data['email']
+        uid = data['uid']
+        userEmail = database.getEmail(uid)
         info = query(searchterm)
         database.addQuery(database.getUID(userEmail), searchterm)
         max = 1
