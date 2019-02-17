@@ -198,8 +198,8 @@ function getQueryFrequency(queryText, inner, index) {
             console.log("here " + text);
             inner.innerHTML = text;
 
-        }
     }
+    
     var json = {
         "uid" : uid,
         "index": index
