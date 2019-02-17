@@ -55,7 +55,7 @@ def query(search_term, from_date = 1262304000, article_count=100, count=100000, 
             dict_rank[b[1]] = 0
     print('news list below')
     print(newsList)
-    return dict_rank
+    return newsList
     #return dict_rank #returns (name, source name, url, datepublished)
 
 def queryNewsApi (search_term, from_date, to_date): #date format yyyy-mm-dd one month back at most
