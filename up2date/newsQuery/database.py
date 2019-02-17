@@ -19,7 +19,7 @@ def addQuery(uid, queryText):
     userRef = db.reference('users/' + str(uid))
     queryInfo = {
         "queryText" : queryText,
-        "frequency" : 7,
+        "frequency" : -1,
         "relevanceThreshold": 0
     }
     queryID = userRef.push(queryInfo)

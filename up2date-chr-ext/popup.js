@@ -192,6 +192,9 @@ function getQueryFrequency(queryText, inner, index) {
     Httpreq.onreadystatechange = function() {
         if (Httpreq.readyState == 4) {
             var text = Httpreq.responseText;
+            if (text == -1){}
+                text = "Auto";
+            }
             console.log("here " + text);
             inner.innerHTML = text;
 
