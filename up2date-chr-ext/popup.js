@@ -182,7 +182,7 @@ function getQueryId(queryText, inner){
         if (Httpreq.readyState == 4) {
             var text = Httpreq.responseText;
             console.log("here " + text);
-            inner.HTML = editTag(text);
+            inner.innerHTML = editTag(text);
             
         }
     }
