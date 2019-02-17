@@ -90,34 +90,9 @@ def sendEmails(request):
                 print(info)
                 urlsList.append(info)
             amazon.send_message(user, urlsList)
-            #quickstart.send_emails(user, urlsList)
-            #send emails for email: user[0]
-            #urlsList is now a list of urls
 
         return HttpResponse('emails successfully sent!')
     return HttpResponse('bad request')
-
-@csrf_exempt
-def search(request):
-    searchterm = "not found"
-    if request.method == "POST":
-        print("POST received")
-        data = json.loads(request.body)
-        searchterm = data['query']
-        uid = data['uid']
-        info = query(searchterm)
-        database.addQuery(uid, searchterm)
-        max = 1
-        total = 1
-        for j, k in info.items():
-            total += int(k)
-            if int(k) > max:
-                max = int(k)
-            #print(str(j) + ': ' + str(k))
-        freq_thres = (max / total) * 0.8
-        database.setFrequency(uid, database.getQueryID(uid, searchterm), total)
-        database.setRelevanceThreshold(uid, database.getQueryID(uid, searchterm), freq_thres)
-    return HttpResponse(database.getQueries(uid))
 
 @csrf_exempt
 def pref_update(request):
