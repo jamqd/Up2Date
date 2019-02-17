@@ -39,7 +39,7 @@ def query(search_term, from_date = 1262304000, article_count=100, count=100000, 
                 dict_rank[i[1]] = 1
         #print("info below:")
         #print(info)
-        time.sleep(0.5)
+        time.sleep(0.75)
     
     params  = {"count": 50, "q": search_term, "since": from_date, "sortBy": "Date", "textDecorations": True, "textFormat": "HTML", "offset": 0}
     response = requests.get(search_url, headers=headers, params=params)
@@ -84,7 +84,6 @@ def sendEmails(request):
         for user in ht:
             urlsList = []
             print(user)
-            print(user[0])
             for q in ht[user]:
                 info = query(q)
                 print(info)
