@@ -13,7 +13,7 @@
         <script src="popup.js"></script>
         <title>Popup</title>
         <style>
-        
+
         .button {
           width: 100%;
           background-color: white;
@@ -149,6 +149,51 @@
     </head>
 
     <body>
+
+  <div class="my-bitmoji-stickerpicker-icon-target" />
+  <script>
+     window.snapKitInit = function () {
+      // Argument 1
+      var bitmojiWebPickerIconClass =
+        'my-bitmoji-stickerpicker-icon-target';
+
+      // Argument 2
+      var uiOptions = {
+        onStickerPickCallback:
+          function onStickerPickCallback(bitmojiImgURL){
+            console.log(bitmojiImgURL);
+          },
+        webpickerPosition: 'bottomRight',
+      };
+
+      // Argument 3
+      var loginParamsObj = {
+        clientId: 'your-clientId',
+        redirectURI: 'your-redirectURI',
+        scopeList: [ // the list of scopes you are approved for
+         'user.bitmoji.avatar',
+         'user.display_name',
+        ],
+      };
+
+      // Mount Bitmoji Icon(s)
+      snap.bitmojikit.mountBitmojiStickerPickerIcons(
+        bitmojiWebPickerIconClass,
+        uiOptions,
+        loginParamsObj,
+      );
+    };
+
+    // Load the SDK asynchronously
+    (function (d, s, id) {
+      var js, sjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://sdk.snapkit.com/js/v1/login_bitmoji.js";
+      sjs.parentNode.insertBefore(js, sjs);
+    }(document, 'script', 'bitmojikit-sdk'));
+  </script>
+
         <div style="display: flex; justify-content: center;">
           <img src="uicon.png" align="middle" width="30" height="30">
         </div>
@@ -188,6 +233,6 @@
         </button>
         </a>
 
-
     </body>
+
 </html>
