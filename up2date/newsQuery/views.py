@@ -89,7 +89,7 @@ def sendEmails(request):
                 info = query(q)
                 print(info)
                 urlsList.append(info)
-            send_emails(user, urlsList)
+            quickstart.send_emails(user, urlsList)
             #send emails for email: user[0]
             #urlsList is now a list of urls
 
