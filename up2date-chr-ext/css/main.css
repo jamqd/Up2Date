@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: OpenSans-Regular;
-  src: url('../fonts/OpenSans/OpenSans-Regular.ttf'); 
+  src: url('../fonts/OpenSans/OpenSans-Regular.ttf');
 }
 
 
@@ -14,8 +14,8 @@
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 * {
-	margin: 0px; 
-	padding: 0px; 
+	margin: 0px;
+	padding: 0px;
 	box-sizing: border-box;
 }
 
@@ -255,23 +255,15 @@ tbody tr:hover {
     top: 0;
   }
   table tbody tr td:nth-child(1):before {
-    content: "Date";
+    content: "Query";
   }
   table tbody tr td:nth-child(2):before {
-    content: "Order ID";
+    content: "Frequency";
   }
   table tbody tr td:nth-child(3):before {
-    content: "Name";
+    content: "Edit";
   }
-  table tbody tr td:nth-child(4):before {
-    content: "Price";
-  }
-  table tbody tr td:nth-child(5):before {
-    content: "Quantity";
-  }
-  table tbody tr td:nth-child(6):before {
-    content: "Total";
-  }
+
 
   .column4,
   .column5,
