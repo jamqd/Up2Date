@@ -59,7 +59,7 @@ def send_message(recipient, texts):
                 #    'Charset': CHARSET,
                 #    'Data': BODY_HTML,
                 #},
-                    'Text': #{
+                    'Text': {
                         'Charset': CHARSET,
                         'Data': BODY_TEXT,
                     },
