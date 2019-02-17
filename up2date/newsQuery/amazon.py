@@ -20,7 +20,7 @@ def send_message(recipient, texts):
 
 # The subject line for the email.
     SUBJECT = "Up2Date"
-
+    BODY_TEXT = ""
 # The email body for recipients with non-HTML email clients.
     for text in texts:
         BODY_TEXT = BODY_TEXT + text + '\n'
