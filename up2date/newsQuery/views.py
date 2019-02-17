@@ -41,7 +41,7 @@ def query(search_term, from_date = 1262304000, article_count=100, count=100000, 
         #print(info)
         time.sleep(0.5)
     
-    params  = {"count": article_count, "q": search_term, "since": from_date, "sortBy": "Date", "textDecorations": True, "textFormat": "HTML", "offset": (100)}
+    params  = {"count": 50, "q": search_term, "since": from_date, "sortBy": "Date", "textDecorations": True, "textFormat": "HTML", "offset": 0}
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
     search_results = response.json()
