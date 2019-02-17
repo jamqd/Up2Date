@@ -44,39 +44,40 @@ def send_message(recipient, texts):
 # Create a new SES resource and specify a region.
     client = boto3.client('ses',region_name=AWS_REGION)
 
+    if BODY_TEXT:
 # Try to send the email.
-    try:
+        try:
     #Provide the contents of the email.
-        response = client.send_email(
-            Destination={
-                'ToAddresses': [
-                    RECIPIENT,
-                ],
-            },
-            Message={
-                'Body': {
+            response = client.send_email(
+                Destination={
+                    'ToAddresses': [
+                        RECIPIENT,
+                    ],
+                },
+                Message={
+                    'Body': {
                 #'Html': {
                 #    'Charset': CHARSET,
                 #    'Data': BODY_HTML,
                 #},
-                    'Text': {
+                        'Text': {
+                            'Charset': CHARSET,
+                            'Data': BODY_TEXT,
+                        },
+                    },
+                    'Subject': {
                         'Charset': CHARSET,
-                        'Data': BODY_TEXT,
+                        'Data': SUBJECT,
                     },
                 },
-                'Subject': {
-                    'Charset': CHARSET,
-                    'Data': SUBJECT,
-                },
-            },
-            Source=SENDER,
+                Source=SENDER,
         # If you are not using a configuration set, comment or delete the
         # following line
         #ConfigurationSetName=CONFIGURATION_SET,
-        )
+            )
 # Display an error if something goes wrong.
-    except ClientError as e:
-        print(e.response['Error']['Message'])
-    else:
-        print("Email sent! Message ID:"),
-        print(response['MessageId'])
+        except ClientError as e:
+            print(e.response['Error']['Message'])
+        else:
+            print("Email sent! Message ID:"),
+            print(response['MessageId'])
