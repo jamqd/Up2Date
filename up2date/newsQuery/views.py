@@ -131,8 +131,8 @@ def getQID(request):
     if request.method == "POST":
         data = json.loads(request.body)
         uid = data['uid']
-        queryText = data['queryText']
-        value = str(database.getQueryID(uid, queryText))
+        index = int(data['index'])
+        value = str(database.getQueryIDs(uid)[index])
         return HttpResponse(value)
     return HttpResponse('false')
 

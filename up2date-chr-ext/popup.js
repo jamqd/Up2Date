@@ -152,7 +152,7 @@ function displayQueries() {
                 var c3 = row.insertCell(2);
                 c1.innerHTML = queryList[i];
                 c2.innerHTML = getQueryFrequency(queryList[i]);
-                getQueryId(queryList[i], c3);
+                getQueryId(queryList[i], c3, i);
             }
         }
     }
@@ -170,7 +170,7 @@ function getQueryFrequency(queryText) {
     return -1;
 }
 
-function getQueryId(queryText, inner){
+function getQueryId(queryText, inner, index ){
     const Httpreq = new XMLHttpRequest();
     const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/getqid/";
     Httpreq.open("POST", Httpurl, true);
@@ -188,7 +188,7 @@ function getQueryId(queryText, inner){
     }
     var json = {
         "uid" : uid,
-        "queryText": queryText
+        "index": index
     }
 
     Httpreq.send(JSON.stringify(json));
