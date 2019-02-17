@@ -152,8 +152,8 @@ def setF(request):
     if request.method == "POST":
         data = json.loads(request.body)
         uid = data['uid']
-        text = data['query']
+        qid = data['qid']
         freq = data['frequency']
-        database.setFrequency(uid, database.getQueryID(uid, text), freq)
+        database.setFrequency(uid, qid, freq)
         return HttpResponse('frequency set!')
     return HttpResponse('false')
