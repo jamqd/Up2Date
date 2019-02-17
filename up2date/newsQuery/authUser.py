@@ -48,4 +48,4 @@ def signIn(email, password):
 # })
 
 # addAuthUser("John", "john.amq.dang@gmail.com", "fuckfuck")
-signIn("john.amq.dang@gmail.com", "fuckfuckfuck")
+# signIn("john.amq.dang@gmail.com", "fuckfuckfuck")
