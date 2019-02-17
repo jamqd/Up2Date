@@ -250,7 +250,7 @@ function setFrequency (uid, qid){
     }
     var newFreq = prompt("Please enter new frequency", 7);
     const Httpreq = new XMLHttpRequest();
-    const Httpurl = "http://treeUp.xdpccjfpps.us-west-2.elasticbeanstalk.comsetf/";
+    const Httpurl = "http://treeUp.xdpccjfpps.us-west-2.elasticbeanstalk.com/setf/";
     Httpreq.open("POST", Httpurl, true);
 
     Httpreq.withCredentials = false;
