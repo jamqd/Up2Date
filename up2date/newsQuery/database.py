@@ -38,6 +38,10 @@ def setRelevanceThreshold(uid, queryID, relevanceThreshold):
     relevanceThresholdRef = db.reference('users/' + str(uid) + "/" + str(queryID) + "/" + "relevanceThreshold")
     relevanceThresholdRef.set(relevanceThreshold)
 
+def getEmail(uid):
+    emailRef = db.reference('users/' + str(uid) + '/' + 'email')
+    return emailRef.get()
+
 def setEmail(uid, email):
     emailRef = db.reference('users/' + str(uid) + "/" + "email")
     emailRef.set(email)
