@@ -1,4 +1,4 @@
-var uid;
+var uid = "-LYshCmequUOw-w7wAgG";
 
 function createAccount(json) {
     console.log(json)
@@ -44,6 +44,7 @@ function createFunction() {
         if (Httpreq.readyState == 4) {
             uid = Httpreq.responseText;
             alert(Httpreq.responseText);
+            console.log(uid);
         }
     }
 
@@ -113,6 +114,38 @@ function queryTitle() {
     });
 }
 
+function displayQueries() {
+    const Httpreq = new XMLHttpRequest();
+    const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/getq/";
+    Httpreq.open("POST", Httpurl, true);
+
+    Httpreq.withCredentials = false;
+    
+    Httpreq.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
+    Httpreq.onreadystatechange = function() {
+        if (Httpreq.readyState == 4) {
+            var text = Httpreq.responseText;
+            console.log(typeof(text));
+            document.getElementById("queries").innerHTML = text;
+            list = text.substring(1, text.length - 1).replace(/\'/gi,'').split(",");
+            list  = list.map(function(item){
+                return item.trim();
+            });
+            console.log(list);
+            return list;
+        }
+    }
+
+    var json = {
+        "uid" : uid
+    }
+
+    Httpreq.send(JSON.stringify(json));
+    alert("sent POST")
+
+    return Httpreq.onreadystatechange;
+}
+
 window.onload=function() {
     var tab_title = document.title;
     if (tab_title == "Popup") {
@@ -120,6 +153,8 @@ window.onload=function() {
         document.getElementById('query-title').addEventListener('click', queryTitle);
     } else if (tab_title == "Create") {
         document.getElementById('cbutton').addEventListener('click', createFunction);
+    } else if (tab_title == "queries"){
+        displayQueries();
     } else {
         document.getElementById('lbutton').addEventListener('click', loginFunction);
     }
