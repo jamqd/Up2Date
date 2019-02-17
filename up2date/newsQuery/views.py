@@ -38,8 +38,6 @@ def query(search_term, from_date = 1262304000, article_count=100, count=100000, 
                 dict_rank[i[1]] += 1
             else :
                 dict_rank[i[1]] = 1
-        #print("info below:")
-        #print(info)
         time.sleep(0.75)
 
     params  = {"count": 50, "q": search_term, "since": from_date, "sortBy": "Date", "textDecorations": True, "textFormat": "HTML", "offset": 0}
