@@ -3,7 +3,7 @@ var uid = localStorage.getItem("uid");
 function createAccount(json) {
     console.log(json)
     const Httpreq = new XMLHttpRequest();
-    const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/auth/";
+    const Httpurl = "http://treeH.25bpgmwvjx.us-west-2.elasticbeanstalk.com/auth/";
     Httpreq.open("POST", Httpurl, true);
 
     Httpreq.withCredentials = false;
@@ -34,7 +34,7 @@ function createFunction() {
   function login(json) {
     console.log(json)
     const Httpreq = new XMLHttpRequest();
-    const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/login/";
+    const Httpurl = "http://treeH.25bpgmwvjx.us-west-2.elasticbeanstalk.com/login/";
     Httpreq.open("POST", Httpurl, true);
 
     Httpreq.withCredentials = false;
@@ -80,7 +80,7 @@ function queryHighlight() {
         //document.getElementById("output").innerHTML = selection[0];
         //user authentication goes here
         const Httpreq = new XMLHttpRequest();
-        const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/q/";
+        const Httpurl = "treeH.25bpgmwvjx.us-west-2.elasticbeanstalk.com/q/";
         Httpreq.open("POST", Httpurl, true);
 
         Httpreq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -109,7 +109,7 @@ function queryTitle() {
     chrome.tabs.getSelected(null, function(tab) {
         //user authentication goes here
         const Httpreq = new XMLHttpRequest();
-        const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/q/";
+        const Httpurl = "http://treeH.25bpgmwvjx.us-west-2.elasticbeanstalk.com/q/";
         Httpreq.open("POST", Httpurl, true);
 
         Httpreq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -137,7 +137,7 @@ function displayQueries() {
         return;
     }
     const Httpreq = new XMLHttpRequest();
-    const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/getq/";
+    const Httpurl = "http://treeH.25bpgmwvjx.us-west-2.elasticbeanstalk.com/getq/";
     Httpreq.open("POST", Httpurl, true);
 
     Httpreq.withCredentials = false;
@@ -183,7 +183,7 @@ function getQueryFrequency(queryText, inner, index) {
         return;
     }
     const Httpreq = new XMLHttpRequest();
-    const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/getf/";
+    const Httpurl = "http://treeH.25bpgmwvjx.us-west-2.elasticbeanstalk.com/getf/";
     Httpreq.open("POST", Httpurl, true);
 
     Httpreq.withCredentials = false;
@@ -213,7 +213,7 @@ function getQueryId(queryText, inner, index ){
         return;
     }
     const Httpreq = new XMLHttpRequest();
-    const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/getqid/";
+    const Httpurl = "http://treeH.25bpgmwvjx.us-west-2.elasticbeanstalk.com/getqid/";
     Httpreq.open("POST", Httpurl, true);
 
     Httpreq.withCredentials = false;
@@ -247,7 +247,7 @@ function setFrequency (uid, qid){
     }
     var newFreq = prompt("Please enter new frequency", 7);
     const Httpreq = new XMLHttpRequest();
-    const Httpurl = "http://django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com/setf/";
+    const Httpurl = "http://treeH.25bpgmwvjx.us-west-2.elasticbeanstalk.com/setf/";
     Httpreq.open("POST", Httpurl, true);
 
     Httpreq.withCredentials = false;
