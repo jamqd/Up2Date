@@ -74,6 +74,8 @@ def getRelevanceThreshold(uid, queryID):
 
 def getQueryText(uid, queryID):
     queryRef = db.reference("users/" + str(uid )+ "/" + str(queryID))
+    print(uid)
+    print(queryRef.get())
     print(queryRef.get()["queryText"])
     return queryRef.get()["queryText"]
 
