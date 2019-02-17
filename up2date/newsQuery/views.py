@@ -78,9 +78,9 @@ def search(request):
                 max = int(k)
             print(str(j) + ': ' + str(k))
         freq_thres = (max / total) * 0.8
-        database.setFrequency(database.getUID(userEmail), database.getQueryID(database.getUID(userEmail), searchterm), total)
-        database.setRelevanceThreshold(database.getUID(userEmail), database.getQueryID(database.getUID(userEmail), searchterm), freq_thres)
-    return HttpResponse(database.getQueries(database.getUID(userEmail)))
+        database.setFrequency(uid, database.getQueryID(uid, searchterm), total)
+        database.setRelevanceThreshold(uid, database.getQueryID(uid, searchterm), freq_thres)
+    return HttpResponse(database.getQueries(uid))
 
 @csrf_exempt
 def pref_update(request):
