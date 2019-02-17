@@ -67,6 +67,21 @@ def queryNewsApi (search_term, from_date, to_date): #date format yyyy-mm-dd one 
     return info
 
 @csrf_exempt
+def storeQuery(request):
+    searchterm = "none given"
+    if request.method == "POST":
+        data = json.loads(request.body)
+        searchterm = data['query']
+        uid = data['uid']
+        database.addQuery(uid, searchterm)
+        database.setFrequency(uid, database.getQueryID(uid, searchterm), 7)
+    return HttpResponse('successfully added ' + str(searchterm) + ' as query for user with id ' + str(uid))
+
+@csrf_exempt
+def sendEmails(request):
+    
+
+@csrf_exempt
 def search(request):
     searchterm = "not found"
     if request.method == "POST":
