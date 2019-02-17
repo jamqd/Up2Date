@@ -80,7 +80,7 @@ function queryHighlight() {
         //document.getElementById("output").innerHTML = selection[0];
         //user authentication goes here
         const Httpreq = new XMLHttpRequest();
-        const Httpurl = "treeH.25bpgmwvjx.us-west-2.elasticbeanstalk.com/q/";
+        const Httpurl = "http://treeH.25bpgmwvjx.us-west-2.elasticbeanstalk.com/q/";
         Httpreq.open("POST", Httpurl, true);
 
         Httpreq.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -192,6 +192,9 @@ function getQueryFrequency(queryText, inner, index) {
     Httpreq.onreadystatechange = function() {
         if (Httpreq.readyState == 4) {
             var text = Httpreq.responseText;
+            if (text == -1){}
+                text = "Auto";
+            }
             console.log("here " + text);
             inner.innerHTML = text;
 
