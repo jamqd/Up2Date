@@ -22,27 +22,27 @@ default_app = firebase_admin.initialize_app(cred, options={
 #def ranking(search_term, from_date = 1262304000, article_count=100, subscription_key="db529dd884ae4732a2bf1a453aa66bb1"):
 
 
-def query(search_term, from_date = 1262304000, article_count=100, count=100000, subscription_key="db529dd884ae4732a2bf1a453aa66bb1"): #use epoch time
+def query(search_term, offset, from_date = 1262304000, article_count=100, subscription_key="db529dd884ae4732a2bf1a453aa66bb1"): #use epoch time
     search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     dict_rank = {} #save this somewhere later to persist through calls
 
-    for k in range(0, count/article_count):
-        params  = {"count": article_count, "q": search_term, "since": from_date, "sortBy": "Date", "textDecorations": True, "textFormat": "HTML", "offset": (k*100)}
-        response = requests.get(search_url, headers=headers, params=params)
-        response.raise_for_status()
-        search_results = response.json()
+    #for k in range(0, count/article_count):
+    params  = {"count": article_count, "q": search_term, "since": from_date, "sortBy": "Date", "textDecorations": True, "textFormat": "HTML", "offset": offset}
+    response = requests.get(search_url, headers=headers, params=params)
+    response.raise_for_status()
+    search_results = response.json()
 
-        info = [(article["name"], article["provider"][0]["name"], article["url"], article["datePublished"]) for article in search_results["value"]]
-        for i in info:
-            if i[1] in dict_rank.keys():
-                dict_rank[i[1]] += 1
-            else :
-                dict_rank[i[1]] = 1
-        print("info below:")
-        print(info)
-        time.sleep(0.5)
-    return dict_rank #returns (name, source name, url, datepublished)
+    info = [(article["name"], article["provider"][0]["name"], article["url"], article["datePublished"]) for article in search_results["value"]]
+    for i in info:
+        if i[1] in dict_rank.keys():
+        dict_rank[i[1]] += 1
+        else :
+            dict_rank[i[1]] = 1
+    print("info below:")
+    print(info)
+    time.sleep(0.5)
+    return info #returns (name, source name, url, datepublished)
 
 # Create your views here.
 @csrf_exempt
