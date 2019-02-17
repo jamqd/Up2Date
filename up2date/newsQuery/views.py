@@ -103,3 +103,12 @@ def login(request):
         authUser.signIn(data['email'], data['password'])
         return HttpResponse('logged in!')
     return HttpResponse('false')
+
+@csrf_exempt
+def getQ(request):
+    if request.method == "GET":
+        data = json.loads(request.body)
+        uid = data['uid']
+        value = str(database.getQueries(uid))
+        return HttpResponse(value)
+    return HttpResponse('false')
