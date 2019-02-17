@@ -47,6 +47,7 @@ def query(search_term, from_date = 1262304000, article_count=100, count=100000, 
         for article in search_results["value"]:
             if article['url'] == url and dict_rank[article['provider'][0]['name']] > 10:
                 newsList.append(article['url'])
+    print('news list below')
     print(newsList)
     return dict_rank
     #return dict_rank #returns (name, source name, url, datepublished)
@@ -56,12 +57,12 @@ def queryNewsApi (search_term, from_date, to_date): #date format yyyy-mm-dd one 
     response = requests.get(a).json()
     
     info = [(article["url"]) for article in response["articles"]]
+    print('newsapi info below')
     print(info)
     return info
 
 @csrf_exempt
 def search(request):
-    userEmail = ""
     searchterm = "not found"
     if request.method == "POST":
         print("POST received")
