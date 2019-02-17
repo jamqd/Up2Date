@@ -81,7 +81,7 @@ def search(request):
             total += int(k)
             if int(k) > max:
                 max = int(k)
-            print(str(j) + ': ' + str(k))
+            #print(str(j) + ': ' + str(k))
         freq_thres = (max / total) * 0.8
         database.setFrequency(uid, database.getQueryID(uid, searchterm), total)
         database.setRelevanceThreshold(uid, database.getQueryID(uid, searchterm), freq_thres)
