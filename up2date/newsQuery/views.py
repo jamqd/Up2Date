@@ -23,7 +23,7 @@ def query(search_term, from_date = 1262304000, article_count=100, count=100000, 
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     dict_rank = {} #save this somewhere later to persist through calls
 
-    for k in range(0, count/article_count):
+    for k in range(0, int(count/article_count)):
         params  = {"count": article_count, "q": search_term, "since": from_date, "sortBy": "Date", "textDecorations": True, "textFormat": "HTML", "offset": (k*100)}
         response = requests.get(search_url, headers=headers, params=params)
         response.raise_for_status()

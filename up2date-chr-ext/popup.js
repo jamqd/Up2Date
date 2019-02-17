@@ -84,7 +84,7 @@ function queryHighlight() {
             "query": selection[0]
         }
 
-        Httpreq.send(json);
+        Httpreq.send(JSON.stringify(json));
         alert("post sent!");
     });
 }
@@ -109,7 +109,7 @@ function queryTitle() {
             "query": tab_title
         }
 
-        Httpreq.send(json);
+        Httpreq.send(JSON.stringify(json));
         alert("post sent!");
     });
 }
