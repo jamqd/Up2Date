@@ -14,7 +14,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 from firebase_admin import auth
-from . import quickstart
+from . import amazon
 
 cred = credentials.Certificate('newsQuery/up2date-d815e-firebase-adminsdk-bvvmg-40710c7694.json')
 default_app = firebase_admin.initialize_app(cred, options={
@@ -89,6 +89,7 @@ def sendEmails(request):
                 info = query(q)
                 print(info)
                 urlsList.append(info)
+            amazon.send_message(user, urlsList)
             #quickstart.send_emails(user, urlsList)
             #send emails for email: user[0]
             #urlsList is now a list of urls
