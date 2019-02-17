@@ -181,6 +181,7 @@ function getQueryId(queryText, inner){
     Httpreq.onreadystatechange = function() {
         if (Httpreq.readyState == 4) {
             var text = Httpreq.responseText;
+            console.log("here " + text);
             inner.HTML = editTag(text);
             
         }
