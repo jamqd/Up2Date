@@ -162,7 +162,7 @@ function displayQueries() {
     }
 
     Httpreq.send(JSON.stringify(json));
-    alert("sent POST")
+    //alert("sent POST")
 
 }
 
@@ -188,7 +188,7 @@ function getQueryFrequency(queryText, inner, index) {
     }
 
     Httpreq.send(JSON.stringify(json));
-    alert("sent POST")
+    //alert("sent POST")
 }
 
 function getQueryId(queryText, inner, index ){
@@ -216,7 +216,7 @@ function getQueryId(queryText, inner, index ){
     }
 
     Httpreq.send(JSON.stringify(json));
-    alert("sent POST")
+    //alert("sent POST")
 }
 
 function setFrequency (uid, qid){
@@ -242,7 +242,7 @@ function setFrequency (uid, qid){
     console.log(json);
 
     Httpreq.send(JSON.stringify(json));
-    alert("sent POST")
+    //alert("sent POST")
     location.reload();
 }
 
