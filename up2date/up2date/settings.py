@@ -28,7 +28,10 @@ DEBUG = True
 ALLOWED_HOSTS = ['django-ev.2tuewqdzwb.us-west-1.elasticbeanstalk.com',
                 'localhost',
                 '13.56.137.79',
-                '127.0.0.1'
+                '127.0.0.1',
+                '54.151.18.46',
+                '13.56.56.31'
+                '172.31.30.182'
                 ]
 
 # Application definition
