@@ -25,15 +25,7 @@ SECRET_KEY = '2z1=g2t3pt^8%f!-4em*+z1fs)uc8!ikw#zm$k5u+22zo==f84'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['treehacks19-u2d-demo-environment.fc3kwfnqyx.us-west-1.elasticbeanstalk.com',
-                'localhost',
-                '13.56.137.79',
-                '127.0.0.1',
-                '54.151.18.46',
-                '13.56.56.31'
-                '172.31.30.182',
-                'treeH.25bpgmwvjx.us-west-2.elasticbeanstalk.com',
-                'treeUp.xdpccjfpps.us-west-2.elasticbeanstalk.com'
+ALLOWED_HOSTS = [
                 ]
 
 # Application definition

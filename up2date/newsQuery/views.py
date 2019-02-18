@@ -16,9 +16,9 @@ from firebase_admin import db
 from firebase_admin import auth
 from . import amazon
 
-cred = credentials.Certificate('newsQuery/up2date-d815e-firebase-adminsdk-bvvmg-40710c7694.json')
+cred = credentials.Certificate('newsQuery/.json')
 default_app = firebase_admin.initialize_app(cred, options={
-    'databaseURL': 'https://up2date-d815e.firebaseio.com/'
+    'databaseURL': ''
 })
 
 def query(search_term, from_date = 1262304000, article_count=100, count=100000, subscription_key="9bd525debceb4c76aaae784632483ed4"): #use epoch time
@@ -57,7 +57,7 @@ def query(search_term, from_date = 1262304000, article_count=100, count=100000, 
     #return dict_rank #returns (name, source name, url, datepublished)
 
 def queryNewsApi (search_term, from_date, to_date): #date format yyyy-mm-dd one month back at most
-    a = "https://newsapi.org/v2/everything?q={0}&from={1}&to={2}&sortBy=popularity&apiKey=3c906a21fbeb43c7819511120fd8a1c2".format(search_term, from_date, to_date)
+    a = "https://newsapi.org/v2/everything?q={0}&from={1}&to={2}&sortBy=popularity&apiKey=".format(search_term, from_date, to_date)
     response = requests.get(a).json()
 
     info = [(article["url"]) for article in response["articles"]]

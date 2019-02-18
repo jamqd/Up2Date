@@ -106,25 +106,6 @@ def massSelect():
     print(ht)
     return ht
 
-#massSelect()
 
-
-
-
-# test_uid = addUser("niceu", "ceasar@gmail.com")
-# queryID = addQuery(test_uid, "trump is dumb")
-# setQuery(test_uid, queryID, "this should be here")
-# setFrequency(test_uid,queryID,30)
-# setRelevanceThreshold(test_uid, queryID, 69)
-# setEmail(test_uid, "bobbyjindal@gmail.com")
-# setName(test_uid, "donald")
-# recoverd = getUID("bobbyjindal@gmail.com")
-# testing = getQueryID(recoverd, "this should be here")
-# getFrequency(test_uid, testing)
-# getRelevanceThreshold(test_uid, testing)
-# getQueryText(test_uid, testing)
-# addQuery(recoverd, "fuck GCP")
-# getQueryIDs(recoverd)
-# getQueries(recoverd)
 
 
